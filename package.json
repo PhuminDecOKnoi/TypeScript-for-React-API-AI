@@ -1,0 +1,26 @@
+{
+  "name": "typescript-for-react-api-ai",
+  "version": "1.0.0",
+  "description": "GitHub-ready TypeScript learning workspace for React, API integration, and AI workflow practice.",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.0"
+  },
+  "keywords": [
+    "typescript",
+    "typescript-7",
+    "react",
+    "api",
+    "ai-workflow",
+    "frontend",
+    "github-ready"
+  ],
+  "author": "PhuminDecOKnoi"
+}
