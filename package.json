@@ -1,23 +1,53 @@
 {
   "name": "typescript-for-react-api-ai",
-  "version": "1.0.0",
-  "description": "GitHub-ready TypeScript learning workspace for React, API integration, and AI workflow practice.",
+  "version": "1.1.0",
+  "description": "GitHub-ready TypeScript 7, React 19, API integration, and AI workflow learning workspace.",
   "type": "module",
   "private": false,
   "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
+    "dev": "vite",
     "check": "tsc --noEmit",
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/main.js"
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "typescript": "^7.0.0"
+    "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^10.7.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
   },
   "keywords": [
     "typescript",
     "typescript-7",
     "react",
+    "react-19",
+    "vite",
     "api",
+    "zod",
     "ai-workflow",
     "frontend",
     "github-ready"
