@@ -1,431 +1,544 @@
-# 🚀 TypeScript Course for Developers
-## หลักสูตร TypeScript ระดับพื้นฐาน–ระดับกลาง สำหรับนักพัฒนา
-### แนวทางการสอนแบบ React + API + AI ตั้งแต่บทแรก และเน้น Comment in Line เป็นหลัก
+# 🚀 TypeScript Course for React, API and AI
 
-> เอกสารฉบับนี้ออกแบบให้ใช้ได้ทั้งในฐานะ **GitHub README**, **Course Outline**, **Teaching Notes**, และ **ต้นแบบ SOP สำหรับการถ่ายทอดต่อ**
+## หลักสูตร TypeScript 7 สำหรับนักพัฒนา React, API และ AI Workflow
 
----
+> เอกสารหลักสูตรฉบับปรับปรุงใหม่สำหรับ repository `PhuminDecOKnoi/TypeScript-for-React-API-AI` ออกแบบให้ใช้เป็น GitHub course outline, teaching notes, workshop guide และเอกสารอ้างอิงภายในทีมได้
 
-## 📌 ภาพรวมหลักสูตร
-
-หลักสูตรนี้ออกแบบสำหรับผู้เรียนที่มีพื้นฐาน JavaScript อยู่แล้ว และต้องการพัฒนาทักษะ TypeScript ให้สามารถนำไปใช้ในงานพัฒนาซอฟต์แวร์จริงได้อย่างมั่นใจ โดยไม่เริ่มจากเนื้อหาเชิงทฤษฎีแบบแห้ง ๆ แต่เริ่มจาก **โจทย์ที่นักพัฒนาสนใจจริง** เช่น
-
-- ⚛️ การสร้าง **React UI**
-- 🌐 การเชื่อมต่อ **API**
-- 🤖 การต่อยอดสู่ **AI Use Case**
-
-แนวคิดหลักของหลักสูตรนี้คือ **สอน TypeScript ผ่านโปรเจกต์ที่จับต้องได้** เพื่อให้ผู้เรียนเห็นภาพว่า TypeScript ไม่ได้เป็นเพียงภาษาเสริมของ JavaScript แต่เป็นเครื่องมือที่ช่วยให้โค้ด **ชัดเจนขึ้น**, **ปลอดภัยขึ้น**, และ **พร้อมทำงานร่วมกับทีมพัฒนาได้ดีขึ้น**
-
-หลักสูตรยังให้ความสำคัญกับการเขียน **Comment in Line** อย่างมีมาตรฐาน เพื่อให้โค้ดที่ใช้ในการสอนและโค้ดที่ใช้ในงานจริงสามารถสื่อสารความหมายได้ชัดเจน เหมาะสำหรับการนำไปใช้ต่อเป็นเอกสารสอน, handout, internal guideline หรือ SOP ของทีมพัฒนา
+![TypeScript](https://img.shields.io/badge/TypeScript-7.0.2-blue)
+![React](https://img.shields.io/badge/React-19.2.8-61dafb)
+![Vite](https://img.shields.io/badge/Vite-8.1.5-646cff)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ---
 
-## 🎯 วัตถุประสงค์ของหลักสูตร
+## 📌 Document Version
+
+| Field | Value |
+|---|---|
+| Course Title | `TypeScript Course for React, API and AI` |
+| Course Version | `v2.0.0-ts7.0-react19-vite8-2026.07.26` |
+| Documentation Reference | `v2.1.0-ref-2026.07.26` |
+| TypeScript | `7.0.2` |
+| React / React DOM | `19.2.8` |
+| Vite | `8.1.5` |
+| React Plugin | `@vitejs/plugin-react 6.0.3` |
+| Runtime Validation | `Zod 4.4.3` |
+| Testing | `Vitest 4.1.10 / React Testing Library 16.3.2` |
+| License | `MIT License` |
+| Naming Standard | `lowercase-kebab-case` for files, folders and package names |
+
+---
+
+## 📖 ภาพรวมหลักสูตร
+
+หลักสูตรนี้ใช้ TypeScript เป็นแกนกลางในการพัฒนาแอปพลิเคชันสมัยใหม่ โดยเชื่อมโยงกับงานจริง 4 ด้าน:
+
+1. **React UI** — component, props, state, event และ ref ที่มีชนิดข้อมูลชัดเจน
+2. **API Integration** — request/response model, async workflow, error handling และ runtime validation
+3. **AI Workflow** — prompt request, structured response, workflow state และ boundary validation
+4. **GitHub Engineering Practice** — naming convention, lint, test, build, CI และ version governance
+
+แนวทางของหลักสูตรคือ “เรียนผ่านโปรเจกต์จริง” ไม่แยก syntax ออกจากบริบทการพัฒนา ผู้เรียนจะเห็นตั้งแต่ต้นว่า TypeScript ช่วยควบคุมข้อมูล ลดข้อผิดพลาด และเพิ่มความน่าเชื่อถือให้กับระบบอย่างไร
+
+---
+
+## 🎯 ผลลัพธ์การเรียนรู้
 
 เมื่อจบหลักสูตร ผู้เรียนควรสามารถ:
 
-- ใช้ TypeScript กับ React, API และ AI-related data flow ได้อย่างเหมาะสม
-- กำหนดชนิดข้อมูลของตัวแปร, ฟังก์ชัน, props, state และ response ได้อย่างชัดเจน
-- เข้าใจแนวคิดของ `type`, `interface`, `union`, `narrowing`, `generics`, `modules` และ `tsconfig`
-- จัดการสถานะของแอป เช่น `idle`, `loading`, `success`, `error` ได้อย่างปลอดภัย
-- เขียนโค้ดตัวอย่างและโค้ดสอนงานในรูปแบบ **Comment in Line** ที่อ่านง่ายและพร้อมถ่ายทอดต่อ
-- ใช้แนวทางเดียวกันนี้ต่อยอดเป็น **คู่มือสอน**, **README**, หรือ **SOP ภายในทีม** ได้
+- ใช้ TypeScript 7 กับ React 19 และ Vite 8 ได้
+- ออกแบบ `type`, `interface`, object model และ generic types ได้อย่างเหมาะสม
+- สร้าง React function component พร้อม typed props, state, events และ refs
+- เขียน API client ที่แยก transport type ออกจาก domain model
+- ตรวจสอบข้อมูลภายนอกด้วย Zod ก่อนนำเข้าสู่ระบบ
+- ออกแบบ typed AI request/response และ workflow state
+- ใช้ ESLint, Prettier, Vitest และ Testing Library ในกระบวนการพัฒนา
+- ใช้ GitHub Actions ตรวจ format, type, lint, test และ build อัตโนมัติ
+- จัดทำ README, CHANGELOG, REFERENCE และเอกสารมาตรฐานทีมได้
 
 ---
 
 ## 👥 กลุ่มเป้าหมาย
 
-หลักสูตรนี้เหมาะสำหรับ:
-
-- นักพัฒนาที่ใช้ JavaScript อยู่แล้ว และต้องการเริ่ม TypeScript อย่างเป็นระบบ
-- ผู้สอน, Tech Lead, Mentor หรือผู้จัดทำเอกสารการสอนภายในองค์กร
-- ทีมพัฒนาที่ต้องการแนวทางมาตรฐานสำหรับการสอน TypeScript แบบใช้ได้จริง
-- ผู้เรียนที่ต้องการเห็น **React + API + AI** ตั้งแต่ต้นคอร์ส ไม่ต้องเริ่มจากเนื้อหาพื้นฐานแบบแยกขาดจากงานจริง
-
----
-
-## 🧭 แนวทางการออกแบบหลักสูตร
-
-หลักสูตรนี้ใช้แนวทางต่อไปนี้เป็นแกนหลัก:
-
-1. **เริ่มด้วยของจริงก่อนทฤษฎี**  
-   เปิดบทแรกด้วย React component, การรับ input และการเตรียมเชื่อม API เพื่อให้ผู้เรียนเห็นว่ากำลังสร้างแอปจริง ไม่ได้เรียน syntax อย่างเดียว
-
-2. **ใช้ TypeScript เป็นเครื่องมือควบคุมข้อมูล**  
-   ทุกบทจะชี้ให้เห็นว่า TypeScript ช่วยควบคุมข้อมูล, ลด error และทำให้โค้ดอ่านง่ายขึ้นอย่างไร
-
-3. **เน้น Comment in Line**  
-   ตัวอย่างโค้ดทุกบทควรมี comment ที่อธิบายสิ่งสำคัญในแต่ละบรรทัด เพื่อให้ผู้เรียนเข้าใจได้จากโค้ดโดยตรง
-
-4. **ใช้ภาษาง่าย แต่เป็นภาษานักพัฒนา**  
-   เอกสารนี้ตั้งใจใช้ถ้อยคำที่เป็นทางการ กระชับ และพร้อมใช้งานต่อในบริบทของทีมพัฒนา
-
-5. **ออกแบบให้พร้อมถ่ายทอดต่อ**  
-   ผู้สอนหรือหัวหน้าทีมสามารถนำเอกสารนี้ไปดัดแปลงเป็น course notes, internal training หรือ SOP ได้ทันที
+- นักพัฒนาที่มีพื้นฐาน JavaScript และต้องการใช้ TypeScript อย่างเป็นระบบ
+- Frontend developer ที่ต้องการพัฒนา React แบบ type-safe
+- นักพัฒนาที่เชื่อม API หรือ AI service
+- Tech Lead, Mentor และ Trainer ที่ต้องการ course material สำหรับถ่ายทอดต่อ
+- ทีมพัฒนาที่ต้องการกำหนด coding standard และ GitHub workflow ร่วมกัน
 
 ---
 
-## 🧱 โครงสร้างหลักสูตร
-## เรียงจาก “ยากไปหาง่าย” แต่เปิดด้วยหัวข้อที่น่าสนใจ
+## 🛠️ Current Stable Toolchain
+
+| Category | Package | Version |
+|---|---|---:|
+| Language | `typescript` | `7.0.2` |
+| UI | `react` | `19.2.8` |
+| DOM renderer | `react-dom` | `19.2.8` |
+| Build tool | `vite` | `8.1.5` |
+| React build plugin | `@vitejs/plugin-react` | `6.0.3` |
+| Runtime validation | `zod` | `4.4.3` |
+| Lint | `eslint` | `10.7.0` |
+| TypeScript lint | `typescript-eslint` | `8.65.0` |
+| React Hooks lint | `eslint-plugin-react-hooks` | `7.1.1` |
+| React Refresh lint | `eslint-plugin-react-refresh` | `0.5.3` |
+| Formatter | `prettier` | `3.9.6` |
+| Test runner | `vitest` | `4.1.10` |
+| React testing | `@testing-library/react` | `16.3.2` |
+| Test DOM | `jsdom` | `29.1.1` |
+
+> TypeScript 7 เป็น native port ที่พัฒนาด้วย Go และให้ประสิทธิภาพการตรวจชนิดข้อมูลสูงขึ้นมาก อย่างไรก็ตาม TypeScript 7.0 ยังไม่มี stable programmatic compiler API ดังนั้นเครื่องมือบางประเภทที่ฝัง TypeScript compiler โดยตรงอาจยังต้องใช้ TypeScript 6 compatibility path
 
 ---
 
-## Module 1 — ⚛️ React + TypeScript: สร้างหน้าแรกของแอป AI
+## ⚙️ การติดตั้งและใช้งาน
 
-### เป้าหมาย
-ให้ผู้เรียนเริ่มจากสิ่งที่จับต้องได้ทันที คือการสร้างหน้า UI ด้วย React + TypeScript เพื่อให้เห็นว่าภาษาไม่ได้อยู่แยกจากงานพัฒนาแอปจริง
+```bash
+npm install
+npm run dev
+```
 
-### หัวข้อสำคัญ
-- React component พื้นฐาน
-- Props typing
-- `useState` กับ TypeScript
-- Event handling เบื้องต้น
-- การเชื่อมข้อมูล input เข้ากับ state
+คำสั่งตรวจคุณภาพ:
 
-### แนวอธิบายสำหรับผู้สอน
-บทนี้ควรทำให้ผู้เรียนรู้สึกว่า “TypeScript ใช้งานได้จริงตั้งแต่วันแรก” โดยไม่เริ่มจากการไล่ list ชนิดข้อมูลแบบแยกขาดจากบริบท ผู้สอนควรชี้ให้เห็นว่า React component คือหน่วยพื้นฐานของ UI และ TypeScript ช่วยกำหนดความคาดหวังของข้อมูลที่ไหลผ่าน component ได้อย่างชัดเจน
-
-### ตัวอย่างโค้ด
-```tsx
-import { useState } from "react"; // นำ useState มาใช้จัดการข้อมูลใน component
-
-type PromptBoxProps = { // กำหนดชนิดข้อมูลของ props
-  title: string; // title ต้องเป็นข้อความ
-};
-
-export function PromptBox({ title }: PromptBoxProps) { // รับ props ตามรูปแบบที่กำหนด
-  const [prompt, setPrompt] = useState<string>(""); // prompt เป็นข้อความ
-  const [result, setResult] = useState<string>(""); // result เป็นข้อความ
-
-  return (
-    <section>
-      <h1>{title}</h1> {/* แสดงชื่อหัวข้อ */}
-      <input
-        value={prompt} // ผูกค่าจาก state เข้ากับ input
-        onChange={(e) => setPrompt(e.target.value)} // อ่านค่าจาก input แล้วอัปเดต state
-      />
-      <button onClick={() => setResult(prompt)}>Generate</button> {/* ทดลองนำ prompt ไปแสดงผล */}
-      <pre>{result}</pre> {/* พื้นที่แสดงผลลัพธ์ */}
-    </section>
-  );
-}
+```bash
+npm run format:check
+npm run check
+npm run lint
+npm test
+npm run build
 ```
 
 ---
 
-## Module 2 — 🌐 เรียก API ด้วย Fetch และจัดการผลลัพธ์อย่างปลอดภัย
+# 🧱 โครงสร้างหลักสูตร
 
-### เป้าหมาย
-ให้ผู้เรียนเริ่มทำงานกับข้อมูลจากภายนอก เพื่อเห็นว่า TypeScript มีบทบาทมากขึ้นทันทีเมื่อเริ่มเชื่อมระบบจริง
+## Module 1 — TypeScript 7 Project Foundation
 
-### หัวข้อสำคัญ
-- `fetch()` และ `async/await`
-- request / response flow
-- การกำหนดรูปแบบของ response
-- loading state และ error state แบบง่าย
+### หัวข้อ
 
-### แนวอธิบายสำหรับผู้สอน
-ผู้สอนควรย้ำว่าข้อมูลจาก API เป็นจุดที่ระบบเริ่มมีความเสี่ยง เพราะไม่ได้อยู่ภายใต้การควบคุมเต็มรูปแบบของเรา การกำหนดชนิดข้อมูลของ response ช่วยลดการเดา และช่วยให้โค้ดที่เชื่อม API ดูเป็นระบบมากขึ้น
+- TypeScript 7 toolchain
+- `package.json`, `tsconfig.json` และ Vite project
+- ECMAScript modules
+- strict mode
+- file/folder naming standard
 
-### ตัวอย่างโค้ด
+### ตัวอย่าง
+
 ```ts
-// กำหนดรูปแบบข้อมูลที่คาดว่าจะได้รับจาก API
+const courseName: string = "TypeScript for React API AI"
+const courseVersion: string = "v2.0.0-ts7.0-react19-vite8-2026.07.26"
 
-type ApiResponse = {
-  output: string; // output เป็นข้อความคำตอบ
-};
-
-async function sendPrompt(prompt: string): Promise<ApiResponse> { // ฟังก์ชันนี้รับ prompt แล้วคืนค่าเป็น Promise
-  const response = await fetch("/api/prompt", { // เรียก API
-    method: "POST", // ใช้วิธีส่งข้อมูลแบบ POST
-    headers: { "Content-Type": "application/json" }, // ระบุชนิดข้อมูลใน body
-    body: JSON.stringify({ prompt }), // แปลงข้อมูลเป็น JSON string
-  });
-
-  const data: ApiResponse = await response.json(); // อ่าน JSON แล้วกำหนดชนิดข้อมูลให้ผลลัพธ์
-  return data; // ส่งข้อมูลกลับ
+function getCourseLabel(name: string, version: string): string {
+  return `${name} (${version})`
 }
+
+console.log(getCourseLabel(courseName, courseVersion))
 ```
 
 ---
 
-## Module 3 — 🤖 ออกแบบข้อมูลสำหรับระบบ AI ด้วย TypeScript
+## Module 2 — Type System and Object Modeling
 
-### เป้าหมาย
-เพิ่มความน่าสนใจของหลักสูตรด้วย use case ด้าน AI และทำให้ผู้เรียนเห็นว่าการออกแบบชนิดข้อมูลคือแกนสำคัญของระบบ
+### หัวข้อ
 
-### หัวข้อสำคัญ
+- primitive types
+- arrays and tuples
+- object types
 - `type` และ `interface`
-- nested object
-- array of objects
-- request / response contract
-- role-based message structure
+- union, intersection และ literal types
+- optional properties
+- type narrowing
+- generics
 
-### แนวอธิบายสำหรับผู้สอน
-บทนี้ไม่จำเป็นต้องสอน AI เชิงลึก แต่ควรใช้ AI เป็น “กรณีศึกษา” ที่ทำให้ผู้เรียนเห็นคุณค่าของ TypeScript ในการนิยาม contract ของข้อมูล เช่น payload, message list และ result structure ผู้สอนควรชี้ให้เห็นว่าการกำหนด schema ของข้อมูลตั้งแต่ต้นจะทำให้ระบบขยายต่อได้ง่ายขึ้น
+### ตัวอย่าง
 
-### ตัวอย่างโค้ด
 ```ts
-// ข้อความแต่ละรายการในบทสนทนา
+type UserRole = "admin" | "developer" | "viewer"
 
-type ChatMessage = {
-  role: "user" | "assistant" | "system"; // จำกัดค่า role ให้เหลือ 3 แบบ
-  content: string; // เนื้อหาของข้อความเป็น string
-};
+interface UserProfile {
+  id: string
+  name: string
+  email: string
+  role: UserRole
+  active: boolean
+}
 
-// รูปแบบ request ไปยังระบบ AI
-
-type PromptRequest = {
-  messages: ChatMessage[]; // messages เป็น array ของข้อความ
-};
-
-// รูปแบบผลลัพธ์ที่คาดว่าจะได้รับ
-
-type PromptResult = {
-  answer: string; // answer เป็นข้อความคำตอบ
-};
-```
-
----
-
-## Module 4 — 🧠 Narrowing และการจัดการสถานะของแอป
-
-### เป้าหมาย
-ให้ผู้เรียนเข้าใจว่าการจัดการสถานะหลายแบบในระบบสามารถทำได้อย่างปลอดภัยและอ่านง่ายด้วย TypeScript
-
-### หัวข้อสำคัญ
-- union type
-- discriminated union
-- narrowing
-- state machine แบบง่าย
-- `idle | loading | success | error`
-
-### แนวอธิบายสำหรับผู้สอน
-หลังจากมี UI และ API แล้ว ผู้เรียนควรเห็นว่าปัญหาต่อไปคือ “สถานะของระบบ” บทนี้ควรทำให้เข้าใจว่า TypeScript ช่วยให้เราไม่เผลอเรียกใช้ข้อมูลผิดสถานะ เช่น พยายามอ่าน `data` ตอนที่ระบบยัง `loading` อยู่ ซึ่งเป็นข้อผิดพลาดที่เจอได้บ่อยใน React app
-
-### ตัวอย่างโค้ด
-```ts
-// สถานะของแอปในแต่ละช่วง
-
-type AppState =
-  | { status: "idle" } // ยังไม่เริ่มทำงาน
-  | { status: "loading" } // กำลังรอผลลัพธ์
-  | { status: "success"; data: string } // ได้ผลลัพธ์แล้ว
-  | { status: "error"; message: string }; // เกิดข้อผิดพลาด
-
-function renderState(state: AppState) { // รับ state แล้วตัดสินใจว่าจะแสดงอะไร
-  if (state.status === "loading") return "Loading..."; // ถ้ากำลังโหลด ให้แสดง Loading
-  if (state.status === "success") return state.data; // ถ้าสำเร็จ ให้แสดงข้อมูล
-  if (state.status === "error") return state.message; // ถ้าผิดพลาด ให้แสดงข้อความ error
-  return "Ready"; // ถ้ายังไม่เริ่ม ให้แสดง Ready
+const user: UserProfile = {
+  id: "USR-001",
+  name: "John Developer",
+  email: "john@example.com",
+  role: "developer",
+  active: true,
 }
 ```
 
 ---
 
-## Module 5 — 🧩 Reusable Types สำหรับ React และ API
+## Module 3 — Function, Class and Domain Object
 
-### เป้าหมาย
-ให้ผู้เรียนเริ่มคิดแบบนักพัฒนาที่ทำงานเป็นทีม และลดการเขียนชนิดข้อมูลซ้ำหลายจุด
+### หัวข้อ
 
-### หัวข้อสำคัญ
-- shared type file
-- `export` / `import`
-- reusable contract
-- ลด duplication
+- typed parameters and return values
+- optional/default parameters
+- generic functions
+- class, constructor และ access modifiers
+- composition over inheritance
+- domain model versus transport model
 
-### แนวอธิบายสำหรับผู้สอน
-บทนี้ควรสอนให้ผู้เรียนมองเห็นว่าชนิดข้อมูลไม่ควรถูกเขียนซ้ำในหลายไฟล์ ถ้า React component, API client และ business logic ใช้ข้อมูลชุดเดียวกัน ก็ควรรวมชนิดข้อมูลไว้ตรงกลาง เพื่อให้ทั้งระบบอ้างอิงมาตรฐานเดียวกัน
+### ตัวอย่าง Class
 
-### ตัวอย่างโค้ด
 ```ts
-// types.ts
-export type PromptResult = { // ส่งออกชนิดข้อมูลสำหรับใช้ร่วมกัน
-  answer: string; // answer เป็นข้อความคำตอบ
-};
-
-// api.ts
-import type { PromptResult } from "./types"; // นำชนิดข้อมูลมาใช้จากไฟล์กลาง
-
-export async function getResult(): Promise<PromptResult> { // ฟังก์ชันนี้ต้องคืนค่าตามรูปแบบ PromptResult
-  return { answer: "Hello" }; // คืนข้อมูลตามสัญญาที่กำหนด
-}
-```
-
----
-
-## Module 6 — ⚙️ tsconfig และ strict mode สำหรับโปรเจกต์จริง
-
-### เป้าหมาย
-ให้ผู้เรียนเข้าใจว่าคุณภาพของโปรเจกต์ TypeScript ไม่ได้อยู่ที่การเขียนโค้ดอย่างเดียว แต่รวมถึงการตั้งค่าระบบให้ทำงานอย่างมีมาตรฐานด้วย
-
-### หัวข้อสำคัญ
-- `tsconfig.json`
-- `strict`
-- `noImplicitAny`
-- ความหมายของ compiler options
-- แนวคิด quality gate เบื้องต้น
-
-### แนวอธิบายสำหรับผู้สอน
-ผู้สอนควรอธิบายว่า `strict` ไม่ได้มีไว้เพื่อทำให้เขียนโค้ดยากขึ้น แต่มีไว้เพื่อให้ระบบช่วยจับปัญหาเร็วขึ้น และช่วยสร้างนิสัยการเขียนโค้ดที่รัดกุมกว่าเดิม การสอนบทนี้ควรเน้นผลกระทบเชิงปฏิบัติ ไม่ใช่สอนแบบจำชื่อ options อย่างเดียว
-
-### ตัวอย่างโค้ด
-```json
-{
-  "compilerOptions": {
-    "target": "ES2020", // ระบุระดับ JavaScript ที่ต้องการให้ compile ออกมา
-    "module": "ES2020", // ใช้ระบบโมดูลแบบ ES Modules
-    "strict": true // เปิดการตรวจ type แบบเข้มขึ้น
+class ApiError extends Error {
+  constructor(
+    message: string,
+    public readonly statusCode: number,
+  ) {
+    super(message)
+    this.name = "ApiError"
   }
 }
 ```
 
+> สำหรับ React application ให้ใช้ function component เป็นแนวทางหลัก ส่วน class เหมาะกับ domain object, custom error และ legacy/error-boundary use cases
+
 ---
 
-## Module 7 — 📦 Everyday Types ผ่านข้อมูลจริงของโปรเจกต์
+## Module 4 — React 19 with TypeScript
 
-### เป้าหมาย
-ปูพื้นชนิดข้อมูลพื้นฐานให้แน่น โดยไม่แยกออกจากบริบทของโปรเจกต์
+### หัวข้อ
 
-### หัวข้อสำคัญ
-- `string`
-- `number`
-- `boolean`
-- array
-- object พื้นฐาน
-- literal type เบื้องต้น
+- function component
+- typed props
+- `useState<T>()`
+- typed event objects
+- `useRef<T>()`
+- children และ `React.ReactNode`
+- component composition
 
-### แนวอธิบายสำหรับผู้สอน
-แทนที่จะสอนชนิดข้อมูลแบบลอย ๆ บทนี้ควรสอนผ่านตัวแปรที่มีความหมายในแอปจริง เช่น `prompt`, `temperature`, `isLoading`, `messageCount` เพื่อให้ผู้เรียนเชื่อมโยงได้ว่าชนิดข้อมูลพื้นฐานเป็นส่วนหนึ่งของงานจริง ไม่ใช่หัวข้อแยกโดดเดี่ยว
+### ตัวอย่าง
 
-### ตัวอย่างโค้ด
+```tsx
+import { useState, type ChangeEvent, type FormEvent } from "react"
+
+type PromptFormProps = {
+  title: string
+  onSubmitPrompt: (prompt: string) => Promise<void>
+}
+
+export function PromptForm({ title, onSubmitPrompt }: PromptFormProps) {
+  const [prompt, setPrompt] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>): void {
+    setPrompt(event.target.value)
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault()
+    setLoading(true)
+
+    try {
+      await onSubmitPrompt(prompt)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>{title}</h2>
+      <input value={prompt} onChange={handleChange} />
+      <button disabled={loading}>{loading ? "Loading..." : "Submit"}</button>
+    </form>
+  )
+}
+```
+
+---
+
+## Module 5 — React State Object and Workflow Modeling
+
+### หัวข้อ
+
+- discriminated union
+- idle/loading/success/error states
+- reducer-friendly object model
+- immutable update
+
 ```ts
-const promptText: string = "Explain TypeScript"; // promptText เป็นข้อความ
-const messageCount: number = 3; // messageCount เป็นตัวเลข
-const isLoading: boolean = false; // isLoading เป็น true หรือ false
-const tags: string[] = ["react", "api", "ai"]; // tags เป็น array ของข้อความ
+type AsyncState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; message: string }
 ```
 
----
-
-## Module 8 — 🛠️ Setup และโครงโปรเจกต์แบบทันสมัย
-
-### เป้าหมาย
-สรุปภาพรวมของภาษาและโปรเจกต์ เพื่อให้ผู้เรียนเข้าใจว่าควรเริ่มต้นงานจริงอย่างไร
-
-### หัวข้อสำคัญ
-- TypeScript คืออะไร
-- ความต่างระหว่าง `.ts` / `.tsx` / `.js`
-- การ compile
-- แนวคิด modern React setup
-- ภาพรวมของ stack ที่ใช้ในคอร์ส
-
-### แนวอธิบายสำหรับผู้สอน
-แม้หัวข้อนี้จะดูเป็น “บทเริ่มต้น” แต่การนำมาไว้ท้ายหลักสูตรจะช่วยให้ผู้เรียนเข้าใจภาพรวมได้ลึกขึ้น เพราะผ่าน use case จริงมาแล้ว ผู้สอนควรใช้บทนี้สรุปภาพทั้งระบบ และอธิบายให้ผู้เรียนเห็นว่า TypeScript คือ JavaScript ที่เพิ่มระบบชนิดข้อมูลเข้ามา เพื่อช่วยตรวจสอบโค้ดก่อนรันจริง
+ประโยชน์คือ component จะไม่สามารถอยู่ในสถานะที่ขัดแย้งกัน เช่น `loading: true` แต่มี `error` และ `data` พร้อมกันโดยไม่ตั้งใจ
 
 ---
 
-## 📝 มาตรฐานการเขียน Comment in Line
+## Module 6 — API Integration and Runtime Validation
 
-หลักสูตรนี้ใช้ **Comment in Line** เป็นเครื่องมือหลักในการอธิบายโค้ด โดยมีแนวปฏิบัติดังนี้
+### หัวข้อ
 
-### หลักการ
-- Comment ต้องช่วยอธิบาย **ความหมาย** หรือ **เหตุผล** ของบรรทัดนั้น
-- ใช้ภาษาสั้น กระชับ ชัดเจน
-- หลีกเลี่ยง comment ที่ซ้ำกับสิ่งที่อ่านเห็นอยู่แล้ว
+- Fetch API
+- typed request/response
+- HTTP error handling
+- `unknown` at external boundaries
+- Zod schema validation
 
-### ตัวอย่างที่ควรใช้
 ```ts
-const price: number = 100; // กำหนดราคาสินค้าเป็นตัวเลข
-const tax: number = 7; // กำหนดภาษีเป็นตัวเลข
-const total = price + tax; // คำนวณยอดรวมจากราคาและภาษี
+import { z } from "zod"
 
-console.log(total); // แสดงผลยอดรวม
+const UserSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.email(),
+})
+
+type User = z.infer<typeof UserSchema>
+
+export async function fetchUser(userId: string): Promise<User> {
+  const response = await fetch(`/api/users/${userId}`)
+
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`)
+  }
+
+  const payload: unknown = await response.json()
+  return UserSchema.parse(payload)
+}
 ```
 
-### ตัวอย่างที่ไม่ควรใช้
+> TypeScript ตรวจชนิดข้อมูลใน compile time แต่ไม่สามารถรับรองข้อมูลจาก network ใน runtime ได้ จึงควรใช้ schema validation ที่ boundary
+
+---
+
+## Module 7 — AI Workflow Object Model
+
+### หัวข้อ
+
+- prompt request model
+- structured response model
+- workflow status
+- provider-independent interface
+- safe handling of uncertain output
+
 ```ts
-const price: number = 100; // price
-const tax: number = 7; // tax
-const total = price + tax; // total
+type AiTone = "formal" | "friendly" | "concise"
+
+type AiPromptRequest = {
+  prompt: string
+  tone: AiTone
+  maxTokens?: number
+}
+
+type AiPromptResponse = {
+  requestId: string
+  output: string
+  model: string
+}
+
+interface AiProvider {
+  generate(request: AiPromptRequest): Promise<AiPromptResponse>
+}
 ```
 
-### เกณฑ์คุณภาพของ Comment
-Comment ที่ดีควรตอบได้อย่างน้อย 1 ข้อ:
-- บรรทัดนี้ทำอะไร
-- บรรทัดนี้รับผิดชอบอะไร
-- บรรทัดนี้เขียนแบบนี้เพราะอะไร
-- ถ้าไม่เขียนแบบนี้จะเกิดอะไรขึ้น
-
 ---
 
-## 👨‍🏫 แนวทางการถ่ายทอดสำหรับผู้สอน
+## Module 8 — React Plugin and Build Stack
 
-ผู้สอนควรเริ่มแต่ละบทด้วย **โจทย์จริง** เช่น “เราจะสร้าง UI สำหรับพิมพ์ prompt” หรือ “เราจะเชื่อม API เพื่อรับผลลัพธ์” ก่อนค่อยอธิบายว่าหัวข้อ TypeScript ในบทนั้นช่วยแก้ปัญหาตรงไหน วิธีนี้จะทำให้ผู้เรียนเข้าใจบริบทก่อนศัพท์ทางเทคนิค
+### หัวข้อ
 
-ในระหว่างการสอน ผู้สอนไม่ควรหยุดเพียงการบอกว่าโค้ดนี้ถูกหรือผิด แต่ควรอธิบายว่าโค้ดแบบใด “เหมาะกับงานพัฒนา” มากกว่า เช่น ชัดกว่า, แยกหน้าที่ดีกว่า, ใช้ซ้ำง่ายกว่า หรือปลอดภัยกว่าต่อการ refactor
+- Vite 8
+- `@vitejs/plugin-react`
+- React Fast Refresh
+- environment variables
+- development and production build
 
-ทุกบทควรมีการให้ผู้เรียนแก้โค้ดอย่างน้อยหนึ่งรอบ เช่น เติม type, แยก shared type, เพิ่ม comment in line หรือ refactor state เพื่อให้ผู้เรียนฝึกคิดเชิงคุณภาพของโค้ด ไม่ใช่เพียงพิมพ์ตามตัวอย่าง
+```ts
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
 
----
-
-## 📂 แนวทางต่อยอดเป็น SOP ภายในทีม
-
-เอกสารฉบับนี้สามารถใช้เป็นต้นแบบเพื่อพัฒนาเอกสารภายในองค์กรได้ เช่น
-
-- Course Outline สำหรับ internal training
-- README สำหรับทีมพัฒนา
-- Coding Guideline สำหรับ TypeScript
-- SOP สำหรับการสร้างตัวอย่างโค้ดและเอกสารสอน
-- Template สำหรับ workshop React + API + AI
-
----
-
-## ✅ สรุปสาระสำคัญ
-
-หลักสูตรนี้แตกต่างจากคอร์ส TypeScript ทั่วไปใน 4 จุดสำคัญ
-
-- เปิดบทแรกด้วย **React UI** ที่จับต้องได้
-- เชื่อมต่อ **API** ตั้งแต่ช่วงต้นของหลักสูตร
-- ใช้ **AI use case** เพื่อเพิ่มแรงดึงดูดและความร่วมสมัย
-- ใช้ **Comment in Line** เป็นแกนหลักของการอธิบายและการถ่ายทอด
-
-ผลลัพธ์ที่ได้คือผู้เรียนจะไม่เพียงเข้าใจ TypeScript ในเชิงภาษา แต่จะเห็นด้วยว่ามันเป็นเครื่องมือสำคัญในการออกแบบโค้ด, ควบคุมข้อมูล และทำงานร่วมกับทีมได้อย่างมีมาตรฐาน
-
----
-
-## 📚 References (APA 7)
-
-MDN Web Docs. (2026, January 8). *Fetch API*. Mozilla.  
-MDN Web Docs. (2025, August 20). *Using the Fetch API*. Mozilla.  
-MDN Web Docs. (2025, December 16). *Window: fetch() method*. Mozilla.  
-MDN Web Docs. (2025, December 23). *Response*. Mozilla.  
-
-OpenAI. (n.d.). *Chat Completions API reference*. OpenAI Platform.  
-
-React. (n.d.). *Quick Start*. React.  
-React. (n.d.). *Using TypeScript*. React.  
-React. (2025, February 14). *Sunsetting Create React App*. React.  
-
-TypeScript. (n.d.). *Documentation*. Microsoft.  
-TypeScript. (n.d.). *React*. Microsoft.  
-TypeScript. (n.d.). *The Basics*. Microsoft.  
-TypeScript. (n.d.). *TypeScript for JavaScript Programmers*. Microsoft.  
-TypeScript. (n.d.). *Handbook*. Microsoft.  
-
----
-
-## 📎 Suggested filename
-
-สามารถใช้ชื่อนี้บน GitHub ได้โดยตรง:
-
-```bash
-README.md
+export default defineConfig({
+  plugins: [react()],
+})
 ```
 
-หรือถ้าต้องการเก็บแยกเป็นเอกสารประกอบ:
+---
 
-```bash
-docs/typescript-course-outline.md
+## Module 9 — ESLint and Team Coding Standard
+
+### หัวข้อ
+
+- ESLint flat config
+- TypeScript ESLint
+- React Hooks rules
+- React Refresh rules
+- Prettier
+- naming convention
+
+มาตรฐานการตั้งชื่อ:
+
+| Element | Standard | Example |
+|---|---|---|
+| Package/folder/docs | lowercase kebab-case | `api-client.ts` |
+| Variables/functions | camelCase | `fetchUserProfile()` |
+| Types/interfaces/classes | PascalCase | `UserProfile` |
+| Constants | UPPER_SNAKE_CASE | `API_BASE_URL` |
+| React component code | PascalCase | `UserCard` |
+| React component file | lowercase kebab-case | `user-card.tsx` |
+
+---
+
+## Module 10 — Testing React and TypeScript
+
+### หัวข้อ
+
+- Vitest
+- React Testing Library
+- component behavior testing
+- API mock strategy
+- test naming standard
+
+```tsx
+import { render, screen } from "@testing-library/react"
+import { describe, expect, it } from "vitest"
+import { UserCard } from "./user-card"
+
+describe("UserCard", () => {
+  it("renders the user name", () => {
+    render(<UserCard name="John Developer" role="Developer" />)
+    expect(screen.getByText("John Developer")).toBeInTheDocument()
+  })
+})
 ```
 
+---
+
+## Module 11 — GitHub Workflow and CI
+
+### หัวข้อ
+
+- branch naming
+- conventional commit messages
+- pull request template
+- GitHub Actions
+- reproducible dependency installation
+- `package-lock.json`
+
+CI quality gate:
+
+```text
+npm ci
+npm run format:check
+npm run check
+npm run lint
+npm test
+npm run build
+```
+
+---
+
+## Module 12 — Capstone Project
+
+### Project: React API AI Dashboard
+
+ผู้เรียนสร้าง dashboard ที่ประกอบด้วย:
+
+- typed React components
+- prompt form
+- API service layer
+- Zod validation
+- typed AI workflow
+- loading/error/success state
+- component test
+- ESLint/Prettier checks
+- GitHub Actions CI
+- README และ CHANGELOG
+
+### Expected Output
+
+```text
+src/
+├── components/
+├── services/
+├── test/
+├── workflows/
+├── app.tsx
+├── main.tsx
+└── styles.css
+```
+
+---
+
+## 🧭 Learning Path
+
+| Week | Focus | Deliverable |
+|---:|---|---|
+| 1 | TypeScript 7 foundation and object model | typed models and functions |
+| 2 | React 19 and component typing | typed UI components |
+| 3 | API and Zod validation | safe API service |
+| 4 | AI workflow and async state | typed AI feature |
+| 5 | Testing, lint, formatting and CI | GitHub-ready project |
+
+---
+
+## 📝 Comment Standard
+
+Comment ควรอธิบาย “เหตุผล” หรือ “ข้อควรระวัง” มากกว่าการแปลโค้ดทุกบรรทัด
+
+```ts
+// Validate external data because compile-time types cannot protect runtime API payloads.
+const user = UserSchema.parse(payload)
+```
+
+หลีกเลี่ยง comment ที่ซ้ำกับโค้ด:
+
+```ts
+// Set loading to true.
+setLoading(true)
+```
+
+---
+
+## 📚 Repository Documents
+
+- [`README.md`](README.md) — project landing page
+- [`REFERENCE.md`](REFERENCE.md) — version governance
+- [`CHANGELOG.md`](CHANGELOG.md) — update history
+- [`docs/version-matrix.md`](docs/version-matrix.md) — dependency versions
+- [`docs/react-typescript-object-model.md`](docs/react-typescript-object-model.md) — object/type/class model
+- [`docs/react-plugin-stack.md`](docs/react-plugin-stack.md) — React plugin stack
+- [`docs/update-policy.md`](docs/update-policy.md) — dependency update policy
+- [`docs/naming-convention.md`](docs/naming-convention.md) — naming standard
+
+---
+
+## ⚠️ TypeScript 7 Compatibility Note
+
+TypeScript 7.0 เหมาะกับ TypeScript/React/Vite workflow ที่ใช้ compiler และ language server ตามปกติ แต่ยังไม่มี stable programmatic compiler API ในรุ่น 7.0 เครื่องมือที่ embed compiler เช่นบาง workflow ของ Vue, Astro, Svelte, MDX หรือ Angular อาจยังต้องใช้ TypeScript 6 compatibility path จนกว่า ecosystem จะรองรับเต็มรูปแบบ
+
+---
+
+## 📄 License
+
+เอกสารและตัวอย่างโค้ดใน repository นี้เผยแพร่ภายใต้ **MIT License** สามารถใช้ คัดลอก แก้ไข และเผยแพร่ต่อได้ตามเงื่อนไขของ license
+
+---
+
+## ✅ Course Update Summary
+
+- Updated from the previous TypeScript course outline to TypeScript `7.0.2`
+- Added React `19.2.8` and Vite `8.1.5`
+- Added typed React props, state, events and refs
+- Added object, interface, class and domain modeling guidance
+- Added API boundary validation with Zod `4.4.3`
+- Added typed AI workflow patterns
+- Added ESLint, Prettier, Vitest and Testing Library modules
+- Added GitHub Actions and version-governance practices
+- Updated naming rules to GitHub/npm-friendly lowercase kebab-case
+
+---
+
+**Current Course Version:** `v2.0.0-ts7.0-react19-vite8-2026.07.26`
